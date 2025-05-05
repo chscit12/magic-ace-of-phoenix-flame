@@ -7,7 +7,7 @@ let text: any
 let sprite: any
 
 const TEXT_X: number = 50
-const TEXT_Y: number = 300
+const TEXT_Y: number = 400
 const SPRITE_Y: number = 100
 const SPRITE_X_LEFT: number = 100
 const SPRITE_X_RIGHT_OFFSET: number = 300
@@ -46,7 +46,7 @@ const WordsSolution = (app: any) => {
         createDialoguePart(scene, avatars, dialogueData, 0)
         renderResponsiveRichText({
             container: textContainer, text: dialogueData.dialogue[0].text,
-            style: {}, iconMap: emojies, maxWidth: 600
+            style: {fontSize: 60}, iconMap: emojies, maxWidth: 600
         })
     })
 
@@ -62,7 +62,7 @@ const WordsSolution = (app: any) => {
             createDialoguePart(scene, avatars, dialogueData, currentText)
             renderResponsiveRichText({
                 container: textContainer, text: dialogueData.dialogue[currentText].text,
-                style: {}, iconMap: emojies, maxWidth: 600
+                style: {fontSize: 60}, iconMap: emojies, maxWidth: 600
             })
         }
     })
@@ -178,6 +178,8 @@ const createDialoguePart = (scene: any, avatars:any , dialogueData: any, dialogu
     } else {
         sprite.x = SPRITE_X_LEFT
     }
+
+    sprite.scale.set(2.0)
 }
 
 const loadTexture = async(src: any) => {

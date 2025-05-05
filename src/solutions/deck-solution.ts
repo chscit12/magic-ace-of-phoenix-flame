@@ -46,8 +46,15 @@ const DeckSolution = (app: Application): Container<any> => {
         }
         flyingCards.forEach(card => {
             card.y += (decksDistance) * (time.deltaMS / CARD_TWEEN_TIME)
+
+            const percentProgress = 1- (-card.y / decksDistance)
+
+            const scale = CARD_SCALE + (- Math.pow(2*percentProgress - 1, 2) + 1 ) * 3.0
+            card.scale.set(scale)
+
             if (card.y >= deck2.children.length * CARD_Y_OFFSET){
                 card.y = deck2.children.length * CARD_Y_OFFSET
+                card.scale.set(CARD_SCALE)
                 cardsFinishedFlying.push(card)
             }
         })
